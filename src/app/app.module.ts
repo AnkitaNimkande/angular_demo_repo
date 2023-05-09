@@ -21,6 +21,7 @@ import { RoutingComponent } from './routing/routing.component';
 import { ParentComponent } from './inter-comp/parent/parent.component';
 import { ChildComponent } from './inter-comp/child/child.component';
 import { ThirdparlibComponent } from './thirdparlib/thirdparlib.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { ThirdparlibComponent } from './thirdparlib/thirdparlib.component';
     RoutingComponent,
     ParentComponent,
     ChildComponent,
-    ThirdparlibComponent
+    ThirdparlibComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
