@@ -1,0 +1,20 @@
+<!-- <p>service works!</p> -->
+
+<button class="btn btn-danger mt-5" (click)="getApiData()">Get Data</button>
+
+<table class="table table-responsive">
+    <tr>
+        <th>Email</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Image</th>
+        <th>Action</th>
+    </tr>
+    <tr *ngFor="let data of allData">
+        <td>{{data.email}}</td>
+        <td>{{data.first_name}}</td>
+        <td>{{data.last_name}}</td>
+        <td><img src="{{data.avatar}}"></td>
+        <td><button class="btn btn-danger" (click)="onDel(data.id)">Delete</button></td>
+    </tr>
+</table>

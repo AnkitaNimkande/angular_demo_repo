@@ -1,0 +1,34 @@
+<!-- <p>pipe works!</p> -->
+
+<h3>Lower Case : {{data|lowercase}}</h3>
+<h3>Upper Case : {{data|uppercase}}</h3>
+<h3>Title Case : {{data1|titlecase}}</h3>
+
+<h3>{{date}}</h3>
+<h3>{{date | date: 'short'}}</h3>
+<h3>{{date | date: 'long'}}</h3>
+<h3>{{date | date: 'medium' }}</h3>
+<h3>{{date | date: 'full'}}</h3>
+<h3>{{date | date: 'dd/MM/yy'}}</h3>
+<h3>{{date | date: 'MMM'}}</h3> 
+<h3>{{date | date: 'MMMM'}}</h3>
+<h3>{{date | date: 'EEEE'}}</h3>
+
+
+<h3>{{data2 | json}}</h3>
+
+<h3>{{data | slice:2}}</h3>
+<h3>{{data | slice:2:5}}</h3>
+
+<h3>{{amount | currency}}</h3>
+<h3>{{amount | currency: 'INR'}}</h3>
+<h3>{{amount | currency: 'EUR'}}</h3>
+<h3>{{amount | currency: 'INR':'code'}}</h3>
+
+
+<h3>{{'hello'| slice:2:5 | uppercase}}</h3>
+
+<h3>{{amount | customPipe}}</h3>
+<h3>{{amount | customPipe: 3}}</h3>
+<h3>{{20 | customPipe: 2 }}</h3>
+

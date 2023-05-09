@@ -1,0 +1,74 @@
+<!-- <p>template-form works!</p> -->
+
+<h4>Template Form</h4>
+<div class="container1">
+    <div class="container" style="width: 500px; height: 170px;border-radius: 10px; background-color: rgb(237, 240, 240); margin-left: 300px; ">
+    <form name="myForm" #ng="ngForm" (ngSubmit)="ng.form.valid && onSubmit(ng)">
+
+        <div class="form-group">
+            <input type="hidden" name="id" #id="ngModel" ngModel [(ngModel)]="idd">
+        </div>
+        <div class="form-group">
+            <label for="name" class="form-label">Name</label><span style="color: red;">*</span>
+            <input type="text" class="form-control" name="name" #name="ngModel" ngModel [(ngModel)]="na" 
+            [ngClass]="{'is-invalid': ng.submitted && name.invalid}" required minlength="2">
+
+            <div *ngIf="ng.submitted && name.invalid" class="invalid-feedback">
+                <div *ngIf="name.errors?.['required']">
+                    This field is required
+                </div> 
+                <div *ngIf="name.errors?.['minlength']">
+                    Minimum two letters required
+                </div>
+            </div>
+        </div>
+
+
+        <div class="form-group mt-2">
+            <label for="gender" class="form-label">Gender</label><span style="color: red;">*</span>&nbsp;
+
+            <label for="male" class="form-label" >Male</label>&nbsp;
+            <input type="radio" class="radio" name="gender" value="Male" #gender="ngModel" ngModel [(ngModel)]="gen"
+            required [ngClass]="{'is-invalid':ng.submitted && gender.invalid}"> &nbsp;
+
+            <label for="female" class="form-label" >Female</label>&nbsp;
+            <input type="radio" class="radio" name="gender" value="Female" #gender="ngModel" ngModel [(ngModel)]="gen"
+            required [ngClass]="{'is-invalid':ng.submitted && gender.invalid}">&nbsp;
+
+            <div *ngIf="ng.submitted && gender.invalid" class="invalid-feedback">
+                <div *ngIf="gender.errors?.['required']">
+                    This field is required
+                </div>
+            
+            </div>
+        </div>
+
+
+        <div class="form-group " >
+            <button class="btn btn-primary m-2">Submit</button>
+            <button type="reset" class="btn btn-danger m-2">Reset</button>
+            <button class="btn btn-warning m-2" (click)="mainUpdate(ng)">Update</button>
+        </div>
+    </form>
+</div>
+
+<div class="container" *ngIf="allData.length>0" >
+<table class="table table-primary">
+    <tr>
+        <th>Name</th>
+        <th>Gender</th>
+        <th>Action</th>
+    </tr>
+    <tr *ngFor="let dt of allData">
+        <td>{{dt.name | custom: dt.gender}}</td>
+        <td>{{dt.gender}}</td>
+        <td>
+            <button class="btn btn-danger m-2" (click)="ondel(dt)">Delete</button>
+            <button class="btn btn-warning m-2" (click)="onUpdate(dt)">Edit</button>
+        </td>
+        
+    </tr>
+</table>
+</div>
+
+</div>

@@ -1,0 +1,156 @@
+<p>service-crud works!</p>
+
+<div class="container1">
+    <div class="container" style="width: 500px; height: 170px;border-radius: 10px; background-color: rgb(237, 240, 240); margin-left: 300px; ">
+    <form name="myForm" #ng="ngForm" (ngSubmit)="ng.form.valid && onSubmit(ng)">
+
+        <div class="form-group">
+            <input type="hidden" name="id" #id="ngModel" ngModel [(ngModel)]="idd">
+        </div>
+        <div class="form-group">
+            <label for="name" class="form-label">Name</label><span style="color: red;">*</span>
+            <input type="text" class="form-control" name="name" #name="ngModel" ngModel [(ngModel)]="na" 
+            [ngClass]="{'is-invalid': ng.submitted && name.invalid}" required minlength="2">
+
+            <div *ngIf="ng.submitted && name.invalid" class="invalid-feedback">
+                <div *ngIf="name.errors?.['required']">
+                    This field is required
+                </div> 
+                <div *ngIf="name.errors?.['minlength']">
+                    Minimum two letters required
+                </div>
+            </div>
+        </div>
+
+
+        <div class="form-group mt-2">
+            <label for="gender" class="form-label">Gender</label><span style="color: red;">*</span>&nbsp;
+
+            <label for="male" class="form-label" >Male</label>&nbsp;
+            <input type="radio" class="radio" name="gender" value="Male" #gender="ngModel" ngModel [(ngModel)]="gen"
+            required [ngClass]="{'is-invalid':ng.submitted && gender.invalid}"> &nbsp;
+
+            <label for="female" class="form-label" >Female</label>&nbsp;
+            <input type="radio" class="radio" name="gender" value="Female" #gender="ngModel" ngModel [(ngModel)]="gen"
+            required [ngClass]="{'is-invalid':ng.submitted && gender.invalid}">&nbsp;
+
+            <div *ngIf="ng.submitted && gender.invalid" class="invalid-feedback">
+                <div *ngIf="gender.errors?.['required']">
+                    This field is required
+                </div>
+            
+            </div>
+        </div>
+
+
+        <div class="form-group " >
+            <button class="btn btn-primary m-2">Submit</button>
+            <button type="reset" class="btn btn-danger m-2">Reset</button>
+            <button class="btn btn-warning" (click)="updateApiData(ng)">Update</button>
+            
+        </div>
+    </form>
+</div>
+
+
+<table class="table table-primary">
+    <tr>
+        <th>Name</th>
+        <th>Gender</th>
+        <th>Action</th>
+    </tr>
+    <tr *ngFor="let dt of allFormdata">
+        <td>{{dt.name | custom: dt.gender}}</td>
+        <td>{{dt.gender}}</td>
+        <td><button class="btn btn-danger" (click)="onDel(dt)">Delete</button></td>
+        <td><button class="btn btn-warning" (click)="sideUpdate(dt)">Edit</button></td>
+        
+    </tr>
+</table>
+
+
+<!-- <h2>Template Form</h2>
+
+<form  name="myForm" #frm="ngForm" (ngSubmit)="onSubmitData(frm)">
+    <div class="form-group">
+        <input type="hidden" name="id" class="form-control" #id="ngModel" ngModel 
+        [(ngModel)]="idd">
+    </div> 
+    <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input type="text" name="fname" class="form-control" #fname="ngModel" ngModel
+        [(ngModel)]="fn">
+    </div>
+    <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <input type="text" name="lname" class="form-control" #lname="ngModel" ngModel
+        [(ngModel)]="ln">
+    </div>
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" name="eml" class="form-control" #eml="ngModel" ngModel
+        [(ngModel)]="el">
+    </div>
+
+    <div class="form-group">
+        <label for="course">Course</label>
+        <select name="course" class="form-control" #course="ngModel" ngModel
+        [(ngModel)]="cor">
+            <option *ngFor="let course of courses">{{course}}</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="gender">Gender</label>
+        <input type="radio" name="gender" class="radio" value="male" #gender="ngModel" ngModel
+        [(ngModel)]="gen">
+        <label for="male">Male</label>
+        <input type="radio" name="gender" class="radio" value="female" #gender="ngModel" ngModel
+        [(ngModel)]="gen">
+        <label for="female">Female</label>
+    </div>
+
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" name="pass" class="form-control" #pass="ngModel" ngModel
+        [(ngModel)]="ps">
+    </div>
+    <div class="form-group">
+        <label for="cpassword">Confirm Password</label>
+        <input type="password" name="cpass" class="form-control" #cpass="ngModel" ngModel
+        [(ngModel)]="cps">
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="button" class="btn btn-warning" (click)="onClickUpdate(frm)">Update</button>
+        <button type="reset" class="btn btn-success">Refresh</button>
+    </div>
+</form>
+
+
+ 
+<table class="table table-primary">
+    <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Course</th>
+        <th>Gender</th>
+        <th>Password</th>
+        <th>Confirm Password</th>
+        <th>Action</th>
+        <th>Action</th>
+    </tr>
+    <tr *ngFor="let data of allFormData">
+        <td>{{data.fname}}</td>
+        <td>{{data.lname}}</td>
+        <td>{{data.eml}}</td>
+        <td>{{data.course}}</td>
+        <td>{{data.gender}}</td>
+        <td>{{data.pass}}</td>
+        <td>{{data.cpass}}</td>
+        <td><button class="btn btn-danger" (click)="onDel(data)">Delete</button></td>
+        <td><button class="btn btn-warning" (click)="onUpdate(data)">Edit</button></td>
+    </tr>
+</table>  -->

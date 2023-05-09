@@ -1,0 +1,48 @@
+<!-- <p>directives works!</p> -->
+<h4>1. Structural Directives</h4>
+
+<h4> *ngIf</h4>
+<p *ngIf="flag">{{show}}</p>
+<p *ngIf="flag && age>18">{{show}}</p>
+<p *ngIf="flag || age>18">{{show}}</p>
+<p *ngIf="!flag">{{show}}</p>
+
+<h4> *ngFor</h4>
+
+<select>
+    <option *ngFor="let sub of subject">{{sub}}</option>
+</select>
+
+<table class="table table-responsive">
+    <tr>
+        <th *ngFor="let sub of subject">{{sub}}</th>
+    </tr>
+</table>
+
+<h4> *ngSwitch</h4>
+
+<div [ngSwitch]="state">
+    <div *ngSwitchCase="'Ka'">Karnataka</div>
+    <div *ngSwitchCase="'Mh'">Maharashtra</div>
+    <div *ngSwitchDefault>Default</div>
+</div>
+
+<h4>2. Attribute Directives</h4>
+
+<h4>[ngClass]</h4>
+<p class="test1">Normal Class</p>
+<p [ngClass]="myClass">Ng class</p>
+<p [ngClass]="(flag && age>18)? 'test2':'test3'">Ng class</p>
+
+<h4>[ngStyle]</h4>
+<p style="color:red">Normal Style</p>
+<p [ngStyle]="{'color':'green'}"><b>Ng Style</b></p>
+<p [ngStyle]= "myStyle"><b>Ng Style</b></p>
+<p [ngStyle]="(flag)? myStyle1:myStyle2">NgStyle</p>
+
+<h4>Custom Directives</h4>
+<h4 appCustom>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsum, odio.</h4>
+
+
+
+

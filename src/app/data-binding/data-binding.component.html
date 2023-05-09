@@ -1,0 +1,20 @@
+<!-- <p>data-binding works!</p> -->
+
+<h4>1. String Interpolation</h4>
+
+<p>{{data}}</p>
+
+<h4>2. Attribute Binding</h4>
+
+<a [href]="Link" >Go to google</a> <br>
+<img [src]="Link1" alt="" width="200px">
+
+<h4>2. Event Binding</h4>
+
+<button class="btn-btn-danger" (click)="onClick()">Event Binding</button>
+
+
+<h4>2. Two way Binding</h4>
+
+<input type="text" [(ngModel)]="data1">
+{{data1}}

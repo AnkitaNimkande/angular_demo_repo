@@ -1,0 +1,19 @@
+{
+  "student": [
+    {
+      "id": 13,
+      "name": "ankita nimkande",
+      "gender": "Female"
+    },
+    {
+      "name": "sak Nimkande",
+      "gender": "Male",
+      "id": 15
+    },
+    {
+      "name": "ankita nimkande",
+      "gender": "Female",
+      "id": 16
+    }
+  ]
+}

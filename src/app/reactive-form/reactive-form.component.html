@@ -1,0 +1,158 @@
+<!-- <p>reactive-form works!</p> -->
+
+<h4>Reactive Form</h4>
+<!-- 
+<div class="container">
+    <form [formGroup]="myForm" (ngsubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" name="name" class="form-control" formControlName="name"
+            [ngClass]="{'is-invalid': submitted && myForm.controls.name.errors}" required>
+
+            <div *ngIf="myForm.controls.name.touched" class="invalid-feedback">
+                <div *ngIf="myForm.controls.name.errors?.required">
+                    This field is required
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <label for="course">Course</label>
+            <select class="form-control" formControlName="course">
+                <option *ngFor="let cor of course">{{cor}}</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <button class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+</div> -->
+
+
+
+<!-- 
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label for="uname" class="form-label">Username</label>
+        <input type="text" class="form-control" name="uname" formControlName="uname"
+        [ngClass]="{'is-invalid':submitted && myForm.controls.uname.errors}" required>
+
+        <div *ngIf="myForm.controls.uname.touched" class="invalid-feedback">
+            <div *ngIf="myForm.controls.uname.errors?.required">
+                This field is required
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" class="form-control" name="pass" formControlName="pass"
+        [ngClass]="{'is-invalid':submitted && myForm.controls.pass.errors}" required>
+
+        <div *ngIf="myForm.controls.pass.touched" class="invalid-feedback">
+            <div *ngIf="myForm.controls.pass.errors?.required">
+                This field is required
+            </div>
+        </div>
+        
+    </div>
+    <div class="form-group">
+        <button class="btn btn-primary">Submit</button>
+    </div>
+
+</form> -->
+
+
+
+
+<h1>
+    Reactive Form CRUD
+</h1>
+<div class="container">
+    <div class="row">
+
+        <div class="col-4" class="bg-img">
+
+        </div>
+        <div class="col-8">
+            <form [formGroup]="myForm" (ngSubmit)="onSubmitData(myForm)">
+
+                <div>
+                    <input type="hidden" name="id" id="" formControlName="id">
+                </div>
+
+
+
+                <div class="form-group mb-3">
+                    <label>First Name: </label>
+                    <input type="text" name="fname" formControlName="fname" class="form-control">
+
+                </div>
+
+
+
+
+                <div class="form-group mb-3">
+
+                    <label>Email: </label>
+                    <input type="email" name="email" formControlName="email" class="form-control">
+
+                </div>
+
+                <div class="form-group mb-3 mt-5">
+                    <label for="gender">Gender:</label>
+                    <input type="radio" name="gender" class=" radio" value="male" formControlName="gender">
+                    <label for="male">Male</label>
+                    <input type="radio" name="gender" class=" radio" value="female" formControlName="gender">
+                    <label for="female">Female</label>
+                </div>
+
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-info">Submit</button>
+
+                    <button type="reset" class="btn btn-danger" style="margin-left: 20px;"> Reset</button>
+
+                    <button type="button" class="btn btn-primary" style="margin-left: 20px;" (click)="UpdateData(myForm)"> Update</button>
+                </div>
+
+
+
+            </form>
+        </div>
+    </div>
+
+
+</div>
+
+
+<div class="container" *ngIf="ShowTable">
+    <table class="table table-primary">
+        <tr>
+            <th>First Name</th>
+            <th>Email</th>
+            <th>Gender</th>
+            <th>Action</th>
+            <th>Action</th>
+
+
+        </tr>
+
+        <tr *ngFor="let dt of allFormData">
+            <td> {{dt.fname}} </td>
+            <td> {{dt.email}}</td>
+            <td> {{dt.gender}} </td>
+
+            <td>
+                <button type="button" (click)="DeleteRow(dt)"> Delet</button>
+            </td>
+            <td>
+                <button type="button" (click)="SideUpdate(dt)"> Update</button>
+            </td>
+
+        </tr>
+    </table>
+</div>
